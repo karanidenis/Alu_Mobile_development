@@ -54,3 +54,8 @@ The project is organized as follows:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Contributors
+Denis Waweru - d.waweru@alustudent.com
+Praise Atadja - p.atadja@alustudent.com
