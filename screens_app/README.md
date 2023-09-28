@@ -38,6 +38,7 @@ WeatherMan is subject to the terms of the MIT License. For more details, please 
 Denis Waweru - d.waweru@alustudent.com
 Praise Atadja - p.atadja@alustudent.com
 
-## Link to demo : https://previewer.adalo.com/4c777463-3880-4491-b81e-41cb7eaf3e5a
+## Link to demo :
+https://previewer.adalo.com/4c777463-3880-4491-b81e-41cb7eaf3e5a
 
 Thank you for choosing WeatherMan! We hope it helps you stay prepared for any weather conditions.
