@@ -35,7 +35,9 @@ If you encounter any issues while using WeatherMan or have suggestions for impro
 WeatherMan is subject to the terms of the MIT License. For more details, please refer to the [LICENSE](LICENSE) file included with this distribution.
 
 ## Contributors
+Denis Waweru - d.waweru@alustudent.com
+Praise Atadja - p.atadja@alustudent.com
 
-WeatherMan was developed by the talented team at WeatherTech Inc. We appreciate the open-source community's contributions to make this app even better.
+## Link to demo : https://previewer.adalo.com/4c777463-3880-4491-b81e-41cb7eaf3e5a
 
 Thank you for choosing WeatherMan! We hope it helps you stay prepared for any weather conditions.
