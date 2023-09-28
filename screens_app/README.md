@@ -36,6 +36,7 @@ WeatherMan is subject to the terms of the MIT License. For more details, please 
 
 ## Contributors
 Denis Waweru - d.waweru@alustudent.com
+
 Praise Atadja - p.atadja@alustudent.com
 
 ## Link to demo :
