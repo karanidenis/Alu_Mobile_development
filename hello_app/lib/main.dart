@@ -253,7 +253,3 @@ class ThirdRoute extends StatelessWidget {
     ); // Scaffold
   }
 }
-
-
-
-
