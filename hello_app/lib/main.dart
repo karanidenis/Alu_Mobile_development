@@ -5,12 +5,15 @@ void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
-      '/': (context) => const HomeRoute(),
-      '/second': (context) => const SecondRoute(),
-      '/third': (context) => const ThirdRoute(),
+     '/': (context) => const HomeRoute(),
+     '/login': (context) => const LoginPage(),
+     '/registration': (context) => const RegistrationPage(), // Add the registration page route
+     '/second': (context) => const SecondRoute(),
+     '/third': (context) => const ThirdRoute(),
     },
-  )); //MaterialApp
+  ));
 }
+
 
 class HomeRoute extends StatelessWidget {
   const HomeRoute({Key? key}) : super(key: key);
@@ -20,8 +23,7 @@ class HomeRoute extends StatelessWidget {
       textStyle: const TextStyle(
         fontSize: 55.0,
         fontWeight: FontWeight.bold,
-      ),
-      primary: Colors.blue, // You can use another color here
+      ), backgroundColor: Colors.blue, // You can use another color here
     );
   }
 
@@ -29,8 +31,94 @@ class HomeRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hello World'),
-        backgroundColor: Colors.blueGrey[900],
+        title: const Text('Welcome Page'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Go to the second page',
+            onPressed: () {
+              Navigator.pushNamed(context, '/login');
+            },
+            // Add additional action buttons here
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Welcome to WeatherMan App',
+              style: TextStyle(fontSize: 24.0),
+            ),
+           const Text(
+              'Version 1.0',
+              style: TextStyle(fontSize: 12.0),
+            ),
+            const Text(
+              'Discover the Weather in Your City',
+              style: TextStyle(fontSize: 16.0),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('Get Started'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login Page'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Go to the second page',
+            onPressed: () {
+              Navigator.pushNamed(context, '/registration');
+            },
+          ),
+          // Add additional action buttons here
+        ],
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Welcome to the Login Page',
+              style: TextStyle(fontSize: 24.0),
+              
+            ),
+            // Add login form or widgets here
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Registration Page'),
         actions: [
           IconButton(
             icon: const Icon(Icons.navigate_next),
@@ -39,40 +127,19 @@ class HomeRoute extends StatelessWidget {
               Navigator.pushNamed(context, '/second');
             },
           ),
+          // Add additional action buttons here
         ],
       ),
       body: const Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Row(
-            //   // Use Row instead of Column
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: <Widget>[
-            //     ElevatedButton(
-            //       style: _buttonStyle(), // Apply the common button style
-            //       child: const Text('To Second'),
-            //       onPressed: () {
-            //         Navigator.pushNamed(context, '/second');
-            //       },
-            //     ),
-            //     const SizedBox(width: 16.0), // Add horizontal spacing
-            //     ElevatedButton(
-            //       style: _buttonStyle(), // Apply the common button style
-            //       child: const Text('To Third!'),
-            //       onPressed: () {
-            //         Navigator.pushNamed(context, '/third');
-            //       },
-            //     ),
-            //   ],
-            // ),
-            Flexible(
-                flex: 1,
-                child: Center(
-                  child: Text('Hello  World',
-                  style: TextStyle(fontSize: 40.0),
-                )),
-        )],
+            Text(
+              'Create a new account',
+              style: TextStyle(fontSize: 24.0),
+            ),
+            // Add registration form or widgets here
+          ],
         ),
       ),
     );
@@ -186,3 +253,7 @@ class ThirdRoute extends StatelessWidget {
     ); // Scaffold
   }
 }
+
+
+
+
