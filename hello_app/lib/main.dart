@@ -12,7 +12,6 @@ void main() {
   )); //MaterialApp
 }
 
-
 class HomeRoute extends StatelessWidget {
   const HomeRoute({Key? key}) : super(key: key);
 
@@ -32,46 +31,50 @@ class HomeRoute extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Hello World'),
         backgroundColor: Colors.blueGrey[900],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Go to the second page',
+            onPressed: () {
+              Navigator.pushNamed(context, '/second');
+            },
+          ),],
+        
       ),
-      body: Center(
+      body: const Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Hello World',
-              style: TextStyle(
-                fontSize: 55.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              // Use Row instead of Column
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton(
-                  style: _buttonStyle(), // Apply the common button style
-                  child: const Text('To Second'),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/second');
-                  },
-                ),
-                const SizedBox(width: 16.0), // Add horizontal spacing
-                ElevatedButton(
-                  style: _buttonStyle(), // Apply the common button style
-                  child: const Text('To Third!'),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/third');
-                  },
-                ),
-              ],
-            ),
+            // Row(
+            //   // Use Row instead of Column
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: <Widget>[
+            //     ElevatedButton(
+            //       style: _buttonStyle(), // Apply the common button style
+            //       child: const Text('To Second'),
+            //       onPressed: () {
+            //         Navigator.pushNamed(context, '/second');
+            //       },
+            //     ),
+            //     const SizedBox(width: 16.0), // Add horizontal spacing
+            //     ElevatedButton(
+            //       style: _buttonStyle(), // Apply the common button style
+            //       child: const Text('To Third!'),
+            //       onPressed: () {
+            //         Navigator.pushNamed(context, '/third');
+            //       },
+            //     ),
+            //   ],
+            // ),
+            Flexible(
+                flex: 1,
+                child: Center(child: Text('Hello  World'),)),
           ],
         ),
       ),
     );
   }
 }
-
 
 class SecondRoute extends StatelessWidget {
   const SecondRoute({Key? key}) : super(key: key);
@@ -88,51 +91,58 @@ class SecondRoute extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.blueGrey[900],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Go to the second page',
+            onPressed: () {
+              Navigator.pushNamed(context, '/third');
+            },
+          ),
+        ],
       ), // AppBar
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
-              // Use Row instead of Column
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                  child: const Text(
-                    'Back!',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16.0), // Add horizontal spacing
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/third');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    textStyle: const TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  child: const Text('To Third!'),
-                ),
-              ],
-            ),
+            // Row(
+            //   // Use Row instead of Column
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     ElevatedButton(
+            //       onPressed: () {
+            //         Navigator.pushNamed(context, '/');
+            //       },
+            //       child: const Text(
+            //         'Back!',
+            //         style: TextStyle(
+            //           fontSize: 30.0,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(width: 16.0), // Add horizontal spacing
+            //     ElevatedButton(
+            //       onPressed: () {
+            //         Navigator.pushNamed(context, '/third');
+            //       },
+            //       style: ElevatedButton.styleFrom(
+            //         primary: Colors.blue,
+            //         textStyle: const TextStyle(
+            //           fontSize: 24.0,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //       child: const Text('To Third!'),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ), // Center
     ); // Scaffold
   }
 }
-
-
 
 class ThirdRoute extends StatelessWidget {
   const ThirdRoute({Key? key}) : super(key: key);
@@ -150,25 +160,25 @@ class ThirdRoute extends StatelessWidget {
         ),
         backgroundColor: Colors.blueGrey[900],
       ), // AppBar
-      body: Center(
-        child: Row(
-          // Use Row instead of Column
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/second');
-              },
-              child: const Text(
-                'Back!',
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: const Center(
+        // child: Row(
+        //   // Use Row instead of Column
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: <Widget>[
+        //     ElevatedButton(
+        //       onPressed: () {
+        //         Navigator.pushNamed(context, '/second');
+        //       },
+        //       child: const Text(
+        //         'Back!',
+        //         style: TextStyle(
+        //           fontSize: 30.0,
+        //           fontWeight: FontWeight.bold,
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ), // Center
     ); // Scaffold
   }
