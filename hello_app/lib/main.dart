@@ -122,7 +122,7 @@ class RegistrationPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the second page',
+            tooltip: 'Go to the hompage page',
             onPressed: () {
               Navigator.pushNamed(context, '/home');
             },
@@ -164,7 +164,7 @@ class HomeRoute extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the second page',
+            tooltip: 'Go to the third page',
             onPressed: () {
               Navigator.pushNamed(context, '/third');
             },
