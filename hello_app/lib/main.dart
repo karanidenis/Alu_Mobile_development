@@ -7,7 +7,7 @@ void main() {
     routes: {
      '/': (context) => const HomeRoute(),
      '/login': (context) => const LoginPage(),
-     '/registration': (context) => const RegistrationPage(), // Add the registration page route
+     '/registration': (context) => const RegistrationPage(),
      '/second': (context) => const SecondRoute(),
      '/third': (context) => const ThirdRoute(),
     },
@@ -23,7 +23,7 @@ class HomeRoute extends StatelessWidget {
       textStyle: const TextStyle(
         fontSize: 55.0,
         fontWeight: FontWeight.bold,
-      ), backgroundColor: Colors.blue, // You can use another color here
+      ), backgroundColor: Colors.blue, 
     );
   }
 
@@ -39,7 +39,7 @@ class HomeRoute extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/login');
             },
-            // Add additional action buttons here
+            // Add additional action buttons 
           ),
         ],
       ),
