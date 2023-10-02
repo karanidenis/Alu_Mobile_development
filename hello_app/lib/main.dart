@@ -5,18 +5,18 @@ void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
-     '/': (context) => const HomeRoute(),
+     '/': (context) => const WelcomeRoute(),
      '/login': (context) => const LoginPage(),
      '/registration': (context) => const RegistrationPage(),
-     '/second': (context) => const SecondRoute(),
+     '/home': (context) => const HomeRoute(),
      '/third': (context) => const ThirdRoute(),
     },
   ));
 }
 
 
-class HomeRoute extends StatelessWidget {
-  const HomeRoute({Key? key}) : super(key: key);
+class WelcomeRoute extends StatelessWidget {
+  const WelcomeRoute({Key? key}) : super(key: key);
 
   ButtonStyle _buttonStyle() {
     return ElevatedButton.styleFrom(
@@ -124,7 +124,7 @@ class RegistrationPage extends StatelessWidget {
             icon: const Icon(Icons.navigate_next),
             tooltip: 'Go to the second page',
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushNamed(context, '/home');
             },
           ),
           // Add additional action buttons here
@@ -146,15 +146,15 @@ class RegistrationPage extends StatelessWidget {
   }
 }
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
+class HomeRoute extends StatelessWidget {
+  const HomeRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Second Page",
+          "Home Page",
           style: TextStyle(
             fontSize: 30.0,
             fontWeight: FontWeight.bold,
@@ -175,6 +175,14 @@ class SecondRoute extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+             Text(
+        'Hello, User', 
+        style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+     
             // Row(
             //   // Use Row instead of Column
             //   mainAxisAlignment: MainAxisAlignment.center,
