@@ -18,7 +18,7 @@ class HomeRoute extends StatelessWidget {
   ButtonStyle _buttonStyle() {
     return ElevatedButton.styleFrom(
       textStyle: const TextStyle(
-        fontSize: 30.0,
+        fontSize: 55.0,
         fontWeight: FontWeight.bold,
       ),
       primary: Colors.blue, // You can use another color here
@@ -38,8 +38,8 @@ class HomeRoute extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/second');
             },
-          ),],
-        
+          ),
+        ],
       ),
       body: const Center(
         child: Column(
@@ -68,8 +68,11 @@ class HomeRoute extends StatelessWidget {
             // ),
             Flexible(
                 flex: 1,
-                child: Center(child: Text('Hello  World'),)),
-          ],
+                child: Center(
+                  child: Text('Hello  World',
+                  style: TextStyle(fontSize: 40.0),
+                )),
+        )],
         ),
       ),
     );
@@ -161,25 +164,25 @@ class ThirdRoute extends StatelessWidget {
         backgroundColor: Colors.blueGrey[900],
       ), // AppBar
       body: const Center(
-        // child: Row(
-        //   // Use Row instead of Column
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: <Widget>[
-        //     ElevatedButton(
-        //       onPressed: () {
-        //         Navigator.pushNamed(context, '/second');
-        //       },
-        //       child: const Text(
-        //         'Back!',
-        //         style: TextStyle(
-        //           fontSize: 30.0,
-        //           fontWeight: FontWeight.bold,
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
-      ), // Center
+          // child: Row(
+          //   // Use Row instead of Column
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: <Widget>[
+          //     ElevatedButton(
+          //       onPressed: () {
+          //         Navigator.pushNamed(context, '/second');
+          //       },
+          //       child: const Text(
+          //         'Back!',
+          //         style: TextStyle(
+          //           fontSize: 30.0,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          ), // Center
     ); // Scaffold
   }
 }
