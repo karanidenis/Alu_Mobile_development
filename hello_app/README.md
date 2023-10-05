@@ -35,3 +35,5 @@ Praise Atadja - p.atadja@alustudent.com
 https://previewer.adalo.com/4c777463-3880-4491-b81e-41cb7eaf3e5a
 
 Thank you for choosing WeatherMan! We hope it helps you stay prepared for any weather conditions.
+
+
