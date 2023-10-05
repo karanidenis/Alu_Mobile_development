@@ -1,10 +1,6 @@
-# Flutter and Android Studio Demo
-
-Welcome to the Flutter and Android Studio demo repository! This repository serves as a starting point for showcasing the integration of Flutter with Android Studio.
-
 ## Getting Started
 
-Follow these steps to set up the demo project on your local machine:
+Follow these steps to set up this project on your local machine:
 
 ### Prerequisites
 
@@ -49,12 +45,6 @@ The project is organized as follows:
 - `ios`: Contains the native iOS code (if you plan to build for iOS).
 - `lib`: Contains the Dart code for your Flutter app.
 - `test`: Contains unit tests for your Flutter app.
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
 ## Contributors
 Denis Waweru - d.waweru@alustudent.com
