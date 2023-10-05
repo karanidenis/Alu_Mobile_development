@@ -230,7 +230,7 @@ class ThirdRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Third Page",
+          "Final Page",
           style: TextStyle(
             fontSize: 40.0,
             fontWeight: FontWeight.bold,
