@@ -16,8 +16,8 @@ Make sure you have the following software installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/flutter-android-studio-demo.git
-cd flutter-android-studio-demo
+git clone https://github.com/karanidenis/Alu_Mobile_development
+cd hello_app
 ```
 
 ### Open in Android Studio
