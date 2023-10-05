@@ -26,10 +26,6 @@ WeatherMan is a mobile application designed to help users easily access weather 
 
 5. **Additional Options**: Depending on the app's features, you may have additional options to customize your weather experience, such as saving favorite cities, setting temperature units (e.g., Celsius or Fahrenheit), or enabling weather alerts.
 
-## Licensing
-
-WeatherMan is subject to the terms of the MIT License. For more details, please refer to the [LICENSE](LICENSE) file included with this distribution.
-
 ## Contributors
 Denis Waweru - d.waweru@alustudent.com
 
