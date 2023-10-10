@@ -49,3 +49,4 @@ The project is organized as follows:
 ## Contributors
 Denis Waweru - d.waweru@alustudent.com
 Praise Atadja - p.atadja@alustudent.com
+Maximum Fredrick - m.fredrick@alustudent.com
