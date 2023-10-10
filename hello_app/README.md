@@ -31,6 +31,8 @@ Denis Waweru - d.waweru@alustudent.com
 
 Praise Atadja - p.atadja@alustudent.com
 
+Maximum Fredrick - m.fredrick@alustudent.com
+
 ## Link to demo :
 https://previewer.adalo.com/4c777463-3880-4491-b81e-41cb7eaf3e5a
 
