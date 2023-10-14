@@ -37,10 +37,14 @@ class WelcomeRoute extends StatelessWidget {
       backgroundColor: primarybackground,
       appBar: AppBar(
         backgroundColor: primarybackground,
-        title: const Text('Welcome Page'),
+        // title: const Text('Welcome Page'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.navigate_next),
+            icon: const Icon(
+              Icons.navigate_next,
+              color: Colors.white,
+            ),
+
             tooltip: 'Go to the second page',
             onPressed: () {
               Navigator.pushNamed(context, '/login');
@@ -49,29 +53,54 @@ class WelcomeRoute extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Welcome to WeatherMan App',
-              style: TextStyle(fontSize: 24.0),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 100.0), // Adjust the top padding as needed
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                const Text(
+                  'WeatherMan',
+                  style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold
+                ),
+                const SizedBox(height: 10), // Add space here (adjust as needed)
+                const Text(
+                  'Version 1.0',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Color.fromARGB(255, 86, 84, 84),
+                  ),
+                ),
+                const SizedBox(height: 50), // Add space here (adjust as needed)
+                const Text(
+                  'Discover the Weather in',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold),
+                ),
+                const SizedBox(height: 10), // Add space here (adjust as needed)
+                const Text(
+                  'Your City',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold),
+                ),
+                const SizedBox(height: 50), // Add space here (adjust as needed)
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: const Text('Get Started')),
+              ],
             ),
-            const Text(
-              'Version 1.0',
-              style: TextStyle(fontSize: 12.0),
-            ),
-            const Text(
-              'Discover the Weather in Your City',
-              style: TextStyle(fontSize: 16.0),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: const Text('Get Started'),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -84,7 +113,7 @@ class HomeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String city = 'Nairobi';
+    const String city = 'Nairobi';
 
     return Scaffold(
       backgroundColor: primarybackground,
