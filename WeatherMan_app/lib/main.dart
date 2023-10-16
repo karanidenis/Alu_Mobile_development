@@ -59,7 +59,7 @@ class WelcomeRoute extends StatelessWidget {
           children: <Widget>[
             // Background Image
             Image.asset(
-              'your_background_image_path_here.png',
+              'weather1.jpg',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
