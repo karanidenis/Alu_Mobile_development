@@ -114,13 +114,13 @@ class LoginForm extends StatelessWidget {
         // Password TextField
         const SizedBox(
             height: 20), // Add space between password field and the button
-        ElevatedButton(
-          onPressed: () {
-            // Implement your login logic here
-          },
-          child: const Text('LOGIN'),
-        ),
         const SizedBox(height: 50), // Add space here (adjust as needed)
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/home');
+            },
+            child: const Text('LOGIN ')),
+        const SizedBox(height: 10), // Add space here (adjust as needed)
         const Text(
           'Forgot Password?',
           style: TextStyle(

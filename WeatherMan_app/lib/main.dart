@@ -54,68 +54,53 @@ class WelcomeRoute extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            // Background Image
-            Image.asset(
-              'weather1.jpg',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-
-            // Text and Button
-            Column(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 100.0), // Adjust the top padding as needed
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const Text(
                   'WeatherMan',
                   style: TextStyle(
-                    fontSize: 40.0,
-                    color: Color.fromARGB(255, 211, 164, 10),
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 30.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10), // Add space here (adjust as needed)
                 const Text(
                   'Version 1.0',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 16.0,
                     color: Color.fromARGB(255, 86, 84, 84),
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 50), // Add space here (adjust as needed)
                 const Text(
                   'Discover the Weather in',
                   style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 16.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10), // Add space here (adjust as needed)
                 const Text(
                   'Your City',
                   style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 16.0,
+                      color: Colors.white, // Set text color to white
+                      fontWeight: FontWeight.bold), // Make text bold),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 50), // Add space here (adjust as needed)
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/login');
-                  },
-                  child: const Text(
-                    'Get Started',
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: const Text('Get Started')),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
