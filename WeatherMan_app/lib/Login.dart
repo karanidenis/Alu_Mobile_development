@@ -145,7 +145,7 @@ class RegistrationPage extends StatelessWidget {
   const RegistrationPage({Key? key}) : super(key: key);
   static const primarybackground = Color(0xFF1E213A);
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primarybackground,
@@ -154,7 +154,7 @@ class RegistrationPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.navigate_next),
-             tooltip: 'Go to the hompage page',
+            tooltip: 'Go to the hompage page',
             onPressed: () {
               Navigator.pushNamed(context, '/home');
             },
@@ -182,115 +182,108 @@ class RegistrationPage extends StatelessWidget {
   }
 }
 
-
-
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Full Name',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
+@override
+Widget build(BuildContext context) {
+  return Center(
+      child: Column(
+    children: <Widget>[
+      const TextField(
+        decoration: InputDecoration(
+          labelText: 'Full Name',
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+              width: 2.0,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(
+                  5), // Adjust the top radius to control the length
+              bottom: Radius.circular(
+                  5), // Adjust the bottom radius to control the length
             ),
           ),
-          style: TextStyle(color: Colors.white),
-        ),
-        // Email TextField
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Email',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
+            // Optional: Set border radius
+          ),
+        ),
+        style: TextStyle(color: Colors.white),
+      ),
+      // Email TextField
+      const TextField(
+        decoration: InputDecoration(
+          labelText: 'Email',
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(
+                  5), // Adjust the top radius to control the length
+              bottom: Radius.circular(
+                  5), // Adjust the bottom radius to control the length
             ),
           ),
-          style: TextStyle(color: Colors.white),
-        ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Password',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
+            // Optional: Set border radius
+          ),
+        ),
+        style: TextStyle(color: Colors.white),
+      ),
+      const SizedBox(height: 20), // Add space between email and password fields
+      // Password TextField
+      const TextField(
+        decoration: InputDecoration(
+          labelText: 'Password',
+          labelStyle: TextStyle(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(
+                  5), // Adjust the top radius to control the length
+              bottom: Radius.circular(
+                  5), // Adjust the bottom radius to control the length
             ),
           ),
-          style: TextStyle(color: Colors.white),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+            // Optional: Set border radius
+          ),
         ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
+        style: TextStyle(color: Colors.white),
+      ),
+      const SizedBox(height: 20), // Add space between email and password fields
+      // Password TextField
 
-        const SizedBox(
-            height: 20), // Add space between password field and the button
-        ElevatedButton(
-          onPressed: () {
-            // Implement your login logic here
-          },
-          child: const Text('SIGN UP'),
-        ),
-        const SizedBox(height: 50), // Add space here (adjust as needed)
-        const Text(
-          'ALREADY HAVE AN ACCOUNT?',
-          style: TextStyle(
-              fontSize: 16.0,
-              color: Colors.white, // Set text color to white
-              fontWeight: FontWeight.bold), // Make text bold),
-        ),
-      ],
-    ));
-  }
+      const SizedBox(
+          height: 20), // Add space between password field and the button
+      ElevatedButton(
+        onPressed: () {
+          // Implement your login logic here
+        },
+        child: const Text('SIGN UP'),
+      ),
+      const SizedBox(height: 50), // Add space here (adjust as needed)
+      const Text(
+        'ALREADY HAVE AN ACCOUNT?',
+        style: TextStyle(
+            fontSize: 16.0,
+            color: Colors.white, // Set text color to white
+            fontWeight: FontWeight.bold), // Make text bold),
+      ),
+    ],
+  ));
 }
