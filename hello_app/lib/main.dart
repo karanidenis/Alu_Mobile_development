@@ -1,20 +1,45 @@
 import 'package:flutter/material.dart';
 // import 'showweather.dart';
-import 'Login.dart';
+import 'login.dart';
 import 'api.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // function to trigger build when the app is run
-void main() {
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const WelcomeRoute(),
-      '/login': (context) => const LoginPage(),
-      '/registration': (context) => const RegistrationPage(),
-      '/home': (context) => const HomeRoute(),
-      '/third': (context) => const ThirdRoute(),
-    },
-  ));
+// void main() {
+//   runApp(MaterialApp(
+//     initialRoute: '/',
+//     routes: {
+//       '/': (context) => const WelcomeRoute(),
+//       '/login': (context) => const LoginPage(),
+//       '/registration': (context) => const RegistrationPage(),
+//       '/home': (context) => const HomeRoute(),
+//       '/third': (context) => const ThirdRoute(),
+//     },
+//   ));
+// }
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(
+      fileName: '.env'); // Load environment variables from .env file
+
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WelcomeRoute(),
+        '/login': (context) => const LoginPage(),
+        '/registration': (context) => const RegistrationPage(),
+        '/home': (context) => const HomeRoute(),
+        '/third': (context) => const ThirdRoute(),
+      },
+    );
+  }
 }
 
 class WelcomeRoute extends StatelessWidget {
