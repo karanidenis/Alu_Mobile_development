@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hello_app/main.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'main.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized(); // Add this line to ensure WidgetsBinding is initialized.
@@ -17,11 +17,7 @@ class SearchBar extends StatelessWidget {
   final TextEditingController searchController;
   final Function(String) onSearch;
 
-<<<<<<< HEAD:hello_app/lib/api.dart
   const SearchBar({
-=======
-  const SearchBar({super.key, 
->>>>>>> c03054af653ba88359d4c526630dcc367cdf18e3:WeatherMan_app/lib/api.dart
     required this.searchController,
     required this.onSearch,
   });
@@ -265,7 +261,8 @@ class _ThirdRouteState extends State<ThirdRoute> {
 // }
 
 Future<Map<String, dynamic>> fetchCityData(String city) async {
-  final apiKey = dotenv.env['weathermanAPI_Key'];
+  // final apiKey = dotenv.env['weathermanAPI_Key'];
+  final apiKey = 'be5a05dee1eb79acf6457d04817d0300';
   print(apiKey);
   final response = await http.get(Uri.parse(
     'http://api.openweathermap.org/geo/1.0/direct?q=$city&limit=2&appid=$apiKey',
@@ -288,7 +285,8 @@ Future<Map<String, dynamic>> fetchCityData(String city) async {
 }
 
 Future<Map<String, dynamic>> fetchWeatherData(double latitude, double longitude) async {
-  final apiKey = dotenv.env['weathermanAPI_Key'];
+  // final apiKey = dotenv.env['weathermanAPI_Key'];
+  final apiKey = 'be5a05dee1eb79acf6457d04817d0300';
   final response = await http.get(Uri.parse(
     'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey',
   ));
