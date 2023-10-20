@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'showweather.dart';
 import 'Login.dart';
 import 'api.dart';
+import 'package:logger/logger.dart';
+final logger = Logger();
 
 // function to trigger build when the app is run
 void main() {
@@ -11,11 +13,13 @@ void main() {
       '/': (context) => const WelcomeRoute(),
       '/login': (context) => const LoginPage(),
       '/registration': (context) => const RegistrationPage(),
+      // '/password': (context) => const PasswordForm(),
       '/home': (context) => const HomeRoute(),
       '/third': (context) => const ThirdRoute(),
     },
   ));
 }
+
 
 class WelcomeRoute extends StatelessWidget {
   const WelcomeRoute({Key? key}) : super(key: key);
