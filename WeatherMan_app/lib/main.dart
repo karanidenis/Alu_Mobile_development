@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // import 'showweather.dart';
 import 'login.dart';
 import 'api.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // function to trigger build when the app is run
 void main() {
