@@ -12,6 +12,7 @@ void main() {
       '/': (context) => const WelcomeRoute(),
       '/login': (context) => const LoginPage(),
       '/registration': (context) => const RegistrationPage(),
+      // '/password': (context) => const PasswordForm(),
       '/home': (context) => const HomeRoute(),
       '/third': (context) => const ThirdRoute(),
     },
