@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'main.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Add this line to ensure WidgetsBinding is initialized.
-  await dotenv.load(fileName: ".env"); // Load environment variables from .env file
-  runApp(const MaterialApp());
-}
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized(); // Add this line to ensure WidgetsBinding is initialized.
+//   await dotenv.load(fileName: "lib/.env"); // Load environment variables from .env file
+//   runApp(MyApp());
+// }
 
 
 final TextEditingController _searchController = TextEditingController();
@@ -16,7 +17,7 @@ class SearchBar extends StatelessWidget {
   final TextEditingController searchController;
   final Function(String) onSearch;
 
-  const SearchBar({super.key, 
+  const SearchBar({
     required this.searchController,
     required this.onSearch,
   });
@@ -135,10 +136,10 @@ class _ThirdRouteState extends State<ThirdRoute> {
                         final weatherIcon = weatherData["Icon"] ?? '01d';
                         // show the weather icon on console
                         print(weatherIcon);
-                        final pressure = weatherData["pressure"] ?? 0;
-                        final humidity = weatherData["humidity"] ?? 0;
+                        // final pressure = weatherData["pressure"] ?? 0;
+                        // final humidity = weatherData["humidity"] ?? 0;
                         final temp = weatherData["temp"] ?? 0;
-                        final windSpeed = weatherData["wind-speed"] ?? 0;
+                        // final windSpeed = weatherData["wind-speed"] ?? 0;
                         final celsiusTemp = (temp - 273.15).toInt();
 
                         weatherIconUrl =
@@ -260,7 +261,9 @@ class _ThirdRouteState extends State<ThirdRoute> {
 // }
 
 Future<Map<String, dynamic>> fetchCityData(String city) async {
-  final apiKey = dotenv.env['weathermanAPI_Key'];
+  // final apiKey = dotenv.env['weathermanAPI_Key'];
+  final apiKey = 'be5a05dee1eb79acf6457d04817d0300';
+  print(apiKey);
   final response = await http.get(Uri.parse(
     'http://api.openweathermap.org/geo/1.0/direct?q=$city&limit=2&appid=$apiKey',
   ));
@@ -282,7 +285,8 @@ Future<Map<String, dynamic>> fetchCityData(String city) async {
 }
 
 Future<Map<String, dynamic>> fetchWeatherData(double latitude, double longitude) async {
-  final apiKey = dotenv.env['weathermanAPI_Key'];
+  // final apiKey = dotenv.env['weathermanAPI_Key'];
+  final apiKey = 'be5a05dee1eb79acf6457d04817d0300';
   final response = await http.get(Uri.parse(
     'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey',
   ));
