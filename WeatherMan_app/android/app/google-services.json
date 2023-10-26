@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "287707911686",
-    "project_id": "flutterlogin-75a90",
-    "storage_bucket": "flutterlogin-75a90.appspot.com"
+    "project_number": "705339786160",
+    "project_id": "weather-app-bc3dd",
+    "storage_bucket": "weather-app-bc3dd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:287707911686:android:da02a8121099f8a5105587",
+        "mobilesdk_app_id": "1:705339786160:android:559c5d987746e79c088c75",
         "android_client_info": {
           "package_name": "com.example.hello_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "705339786160-45bal00o97s8kokk0ruttf5m1beiatlg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCf2h95TuHGjpoY8g-fSEgo-OOMm_7Jnio"
+          "current_key": "AIzaSyBgW0iS7l2ELAhhvdjpfEPw-QtVkJqrfNw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705339786160-45bal00o97s8kokk0ruttf5m1beiatlg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

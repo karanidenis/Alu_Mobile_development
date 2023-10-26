@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -50,19 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAkNO5-7Zgqu1_FyvuohD01F2L5odHwdNg',
-    appId: '1:287707911686:web:41b9a53584c6c053105587',
-    messagingSenderId: '287707911686',
-    projectId: 'flutterlogin-75a90',
-    authDomain: 'flutterlogin-75a90.firebaseapp.com',
-    storageBucket: 'flutterlogin-75a90.appspot.com',
+    apiKey: 'AIzaSyBL_h4iGsVKuUwKj9wi6pBRRJ0W2RTmyRY',
+    appId: '1:705339786160:web:5fd4da8f60e2466c088c75',
+    messagingSenderId: '705339786160',
+    projectId: 'weather-app-bc3dd',
+    authDomain: 'weather-app-bc3dd.firebaseapp.com',
+    storageBucket: 'weather-app-bc3dd.appspot.com',
+    measurementId: 'G-6F5M47CPGB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCf2h95TuHGjpoY8g-fSEgo-OOMm_7Jnio',
-    appId: '1:287707911686:android:da02a8121099f8a5105587',
-    messagingSenderId: '287707911686',
-    projectId: 'flutterlogin-75a90',
-    storageBucket: 'flutterlogin-75a90.appspot.com',
+    apiKey: 'AIzaSyBgW0iS7l2ELAhhvdjpfEPw-QtVkJqrfNw',
+    appId: '1:705339786160:android:559c5d987746e79c088c75',
+    messagingSenderId: '705339786160',
+    projectId: 'weather-app-bc3dd',
+    storageBucket: 'weather-app-bc3dd.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCJR_AP6DW2XoiMxufKKqzg19aP6vBGwss',
+    appId: '1:705339786160:ios:14b2056a539e92e3088c75',
+    messagingSenderId: '705339786160',
+    projectId: 'weather-app-bc3dd',
+    storageBucket: 'weather-app-bc3dd.appspot.com',
+    iosClientId: '705339786160-959c0aikggm5okbgmsl1p13ej9uulkc1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.helloApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCJR_AP6DW2XoiMxufKKqzg19aP6vBGwss',
+    appId: '1:705339786160:ios:53deedf94e0eedf2088c75',
+    messagingSenderId: '705339786160',
+    projectId: 'weather-app-bc3dd',
+    storageBucket: 'weather-app-bc3dd.appspot.com',
+    iosClientId: '705339786160-745nnlgbk1a3ci8d31it07vtraar9er1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.helloApp.RunnerTests',
   );
 }

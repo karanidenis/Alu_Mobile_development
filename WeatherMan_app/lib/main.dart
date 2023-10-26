@@ -1,22 +1,67 @@
 import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_app/firebase_options.dart';
-
+import 'firebase_options.dart';
 import 'api.dart';
-// import 'showweather.dart';
-import 'login.dart';
+import 'Login.dart';
+import 'RegistrationPage.dart';
+
+// await Firebase.initializeApp(
+//   options: DefaultFirebaseOptions.currentPlatform,
+// );
+
+// check user status
+// FirebaseAuth.instance
+//   .authStateChanges()
+//   .listen((User? user) {
+//     if (user == null) {
+//       print('User is currently signed out!');
+//     } else {
+//       print('User is signed in!');
+//     }
+//   });
+
+// // Password reset
+// try {
+//   final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+//     email: emailAddress,
+//     password: password,
+//   );
+// } on FirebaseAuthException catch (e) {
+//   if (e.code == 'weak-password') {
+//     print('The password provided is too weak.');
+//   } else if (e.code == 'email-already-in-use') {
+//     print('The account already exists for that email.');
+//   }
+// } catch (e) {
+//   print(e);
+// }
+
+// Sign in
+// try {
+//   final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+//     email: emailAddress,
+//     password: password,
+//   );
+// } on FirebaseAuthException catch (e) {
+//   if (e.code == 'user-not-found') {
+//     print('No user found for that email.');
+//   } else if (e.code == 'wrong-password') {
+//     print('Wrong password provided for that user.');
+//   }
+// }
 
 // function to trigger build when the app is run
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.android );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
       '/': (context) => const WelcomeRoute(),
-      '/login': (context) => const LoginPage(),
-      '/registration': (context) => const RegistrationPage(),
+      '/registration': (context) => RegistrationPage(),
+      '/login': (context) => LoginPage(),
       '/home': (context) => const HomeRoute(),
       '/third': (context) => const ThirdRoute(),
     },
@@ -101,7 +146,7 @@ class WelcomeRoute extends StatelessWidget {
                 const SizedBox(height: 50), // Add space here (adjust as needed)
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/login');
+                      Navigator.pushNamed(context, '/registration');
                     },
                     child: const Text('Get Started')),
               ],
