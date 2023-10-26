@@ -41,7 +41,7 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registration'),
+        title: const Text('Sign Up'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,14 +55,28 @@ class RegistrationPage extends StatelessWidget {
             TextFormField(
               controller: passwordController,
               decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true, // Password field should be obscured
+              // obscureText: true, // Password field should be obscured
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 _registerUser(context);
               },
-              child: const Text('Register'),
+              child: const Text('Sign Up'),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Already have an account? Login',
+              style: TextStyle(
+                  color: Colors
+                      .blue), // Make the text blue or your preferred color
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the login page when the "Login" button is pressed
+                Navigator.of(context).pushReplacementNamed('/login');
+              },
+              child: const Text('Login'),
             ),
           ],
         ),
