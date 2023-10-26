@@ -222,6 +222,7 @@ class RegistrationForm extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         // Email TextField
+        const SizedBox(height: 20),
         const TextField(
           decoration: InputDecoration(
             labelText: 'Email',
