@@ -1,4 +1,0 @@
-#Fri Oct 13 20:06:09 EAT 2023
-base.0=/home/denis/Desktop/code/ALu_Mobile_dev/Alu_Mobile_development/hello_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
