@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_app/firebase_options.dart';
 
 import 'api.dart';
 // import 'showweather.dart';
 import 'login.dart';
 
 // function to trigger build when the app is run
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android );
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {

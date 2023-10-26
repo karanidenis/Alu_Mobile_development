@@ -2,6 +2,8 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+
+   
 }
 
 def localProperties = new Properties()
@@ -21,6 +23,12 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+
+apply plugin:'com.android.application'
+apply plugin:'kotlin-android'
+apply plugin:'com.google.gms.google-services'
+
+
 
 android {
     namespace "com.example.hello_app"
@@ -64,4 +72,7 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
