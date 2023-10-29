@@ -5,6 +5,8 @@ class RegistrationPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  RegistrationPage({super.key});
+
   // Function to handle user registration
   Future<void> _registerUser(BuildContext context) async {
     try {
@@ -17,21 +19,21 @@ class RegistrationPage extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       // Handle exceptions and show error messages to the user
       if (e.code == 'weak-password') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('The password provided is too weak.'),
         ));
       } else if (e.code == 'email-already-in-use') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('The account already exists for that email.'),
         ));
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Registration failed. Please try again.'),
         ));
       }
     } catch (e) {
       // Handle other errors and show a generic error message
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('An error occurred. Please try again later.'),
       ));
     }

@@ -1,302 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
-  static const primarybackground = Color(0xFF1E213A);
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  LoginPage({super.key});
+
+  Future<void> _loginUser(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      // User logged in successfully, you can navigate to the home page or perform other actions.
+      Navigator.of(context).pushReplacementNamed('/home');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('No user found for that email.'),
+        ));
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Wrong password provided for that user.'),
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Login failed. Please try again.'),
+        ));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('An error occurred. Please try again later.'),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primarybackground,
       appBar: AppBar(
-        backgroundColor: primarybackground,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the registration page',
-            onPressed: () {
-              Navigator.pushNamed(context, '/registration');
-            },
-          ),
-        ],
+        title: const Text('Login'),
       ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.only(top: 10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Login',
-                style: TextStyle(fontSize: 24.0, color: Colors.white),
-              ),
-              SizedBox(height: 20), // Add space between text and the form
-              LoginForm(),
-              // Add your login form widget here
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextFormField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+            ),
+            TextFormField(
+              controller: passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true, // Password field should be obscured
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _loginUser(context);
+              },
+              child: const Text('Login'),
+            ),
+          ],
         ),
       ),
     );
-  }
-}
-
-class LoginForm extends StatelessWidget {
-  const LoginForm({super.key});
-
-  // Define a static constant for the border
-  static const OutlineInputBorder inputBorder = OutlineInputBorder(
-    borderSide: BorderSide(
-        color: Colors.transparent), // Set the border color to transparent
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        // Email TextField
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Email',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
-            ),
-          ),
-          style: TextStyle(color: Colors.white),
-        ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Password',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
-            ),
-          ),
-          style: TextStyle(color: Colors.white),
-        ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
-        const SizedBox(
-            height: 20), // Add space between password field and the button
-        ElevatedButton(
-          onPressed: () {
-            // Implement your login logic here
-          },
-          child: const Text('LOGIN'),
-        ),
-        const SizedBox(height: 50), // Add space here (adjust as needed)
-        const Text(
-          'Forgot Password?',
-          style: TextStyle(
-              fontSize: 16.0,
-              color: Colors.white, // Set text color to white
-              fontWeight: FontWeight.bold), // Make text bold),
-        ),
-        const SizedBox(
-            height: 20), // Add space between password field and the button
-        ElevatedButton(
-          onPressed: () {
-            // Implement your login logic here
-          },
-          child: const Text('SIGN UP'),
-        ),
-      ],
-    ));
-  }
-}
-
-class RegistrationPage extends StatelessWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
-  static const primarybackground = Color(0xFF1E213A);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primarybackground,
-      appBar: AppBar(
-        backgroundColor: primarybackground,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the hompage page',
-            onPressed: () {
-              Navigator.pushNamed(context, '/home');
-            },
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.only(top: 10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Sign Up',
-                style: TextStyle(fontSize: 24.0, color: Colors.white),
-              ),
-              SizedBox(height: 20), // Add space between text and the form
-              RegistrationForm(),
-              // Add your login form widget here
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class RegistrationForm extends StatelessWidget {
-  const RegistrationForm({super.key});
-
-  // Define a static constant for the border
-  static const OutlineInputBorder inputBorder = OutlineInputBorder(
-    borderSide: BorderSide(
-        color: Colors.transparent), // Set the border color to transparent
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      children: <Widget>[
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Full Name',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
-            ),
-          ),
-          style: TextStyle(color: Colors.white),
-        ),
-        // Email TextField
-        const SizedBox(height: 20),
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Email',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
-            ),
-          ),
-          style: TextStyle(color: Colors.white),
-        ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
-        const TextField(
-          decoration: InputDecoration(
-            labelText: 'Password',
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(
-                    5), // Adjust the top radius to control the length
-                bottom: Radius.circular(
-                    5), // Adjust the bottom radius to control the length
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
-              // Optional: Set border radius
-            ),
-          ),
-          style: TextStyle(color: Colors.white),
-        ),
-        const SizedBox(
-            height: 20), // Add space between email and password fields
-        // Password TextField
-
-        const SizedBox(
-            height: 20), // Add space between password field and the button
-        ElevatedButton(
-          onPressed: () {
-            // Implement your login logic here
-          },
-          child: const Text('SIGN UP'),
-        ),
-        const SizedBox(height: 50), // Add space here (adjust as needed)
-        const Text(
-          'ALREADY HAVE AN ACCOUNT?',
-          style: TextStyle(
-              fontSize: 16.0,
-              color: Colors.white, // Set text color to white
-              fontWeight: FontWeight.bold), // Make text bold),
-        ),
-      ],
-    ));
   }
 }

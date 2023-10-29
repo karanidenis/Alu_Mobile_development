@@ -5,6 +5,8 @@ class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  LoginPage({super.key});
+
   Future<void> _loginUser(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -15,20 +17,20 @@ class LoginPage extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed('/home');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('No user found for that email.'),
         ));
       } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Wrong password provided for that user.'),
         ));
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Login failed. Please try again.'),
         ));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('An error occurred. Please try again later.'),
       ));
     }
