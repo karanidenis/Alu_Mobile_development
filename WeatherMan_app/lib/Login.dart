@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
         } else if (e.code == 'wrong-password') {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Wrong password provided for that user.'),
+            content: Text('Wrong password provided for that user.'),
             ),
           );
         } else {

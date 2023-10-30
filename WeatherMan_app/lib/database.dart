@@ -15,11 +15,11 @@ class DataGeoMethods {
         .get();
   }
 
-  Future UpdateUserData(String timezone, String id) async {
+  Future UpdateUserData(String location, String id) async {
     return await FirebaseFirestore.instance
         .collection("location")
         .doc(id)
-        .update({"Time Zone": timezone});
+        .update({"Location": location});
   }
 
   Future DeleteUserData(String id) async {

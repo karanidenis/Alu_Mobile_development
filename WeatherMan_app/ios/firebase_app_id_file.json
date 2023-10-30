@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:705339786160:ios:14b2056a539e92e3088c75",
-  "FIREBASE_PROJECT_ID": "weather-app-bc3dd",
-  "GCM_SENDER_ID": "705339786160"
+  "GOOGLE_APP_ID": "1:216408854473:ios:ef53f485094c63d8f02218",
+  "FIREBASE_PROJECT_ID": "mobile-weather-fb042",
+  "GCM_SENDER_ID": "216408854473"
 }

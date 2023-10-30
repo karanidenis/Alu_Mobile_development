@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Login.dart';
 import 'Signup.dart';
-
 import 'api.dart';
 import 'firebase_options.dart';
 import 'home.dart';
@@ -63,8 +62,10 @@ Future<void> main() async {
       '/': (context) => const WelcomeRoute(),
       '/registration': (context) => SignUpPage(),
       '/login': (context) => LoginPage(),
-      '/home': (context) => const Geometry(),
-      '/third': (context) => const ThirdRoute(),
+      '/home': (context) =>  CityCapturePage(),
+      '/weather': (context) => const ThirdRoute(),
+      '/feedback': (context) => FeedbackPage(),
+
     },
   ));
 }

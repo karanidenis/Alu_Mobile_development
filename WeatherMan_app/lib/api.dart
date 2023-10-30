@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 
 final TextEditingController _searchController = TextEditingController();
+
+// read a location value from db
+// const location = await DataGeoMethods().getthisUserInfo(location);
+
+Future<void> getCityData() async {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String city = '';
+
+  try {
+    QuerySnapshot cityData = await firestore.collection('cities').get();
+
+    if (cityData.docs.isNotEmpty) {
+      // If there's at least one document in the collection, set the city to the first one
+      final cityName = cityData.docs.first['cityName'];
+      city = cityName;
+    } else {
+      // If the collection is empty, set the city to 'Nairobi'
+      city = 'Nairobi';
+    }
+  } catch (e) {
+    print('Error fetching city data: $e');
+    // Handle the error as needed
+  }
+}
+
 
 class SearchBar extends StatelessWidget {
   final TextEditingController searchController;
@@ -62,7 +89,8 @@ class ThirdRoute extends StatefulWidget {
 
 class _ThirdRouteState extends State<ThirdRoute> {
   final TextEditingController _searchController = TextEditingController();
-  String city = 'Nairobi';
+  //  value of city should be the value of the location field in the database
+  String  city = '';
   String weatherIconUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
 
   @override

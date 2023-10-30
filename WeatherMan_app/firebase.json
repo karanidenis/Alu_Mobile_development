@@ -1,0 +1,8 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "extensions": {
+    "export-user-data": "invertase/export-user-data@0.1.0"
+  }
+}

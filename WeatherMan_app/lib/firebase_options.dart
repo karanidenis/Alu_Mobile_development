@@ -44,40 +44,44 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBL_h4iGsVKuUwKj9wi6pBRRJ0W2RTmyRY',
-    appId: '1:705339786160:web:5fd4da8f60e2466c088c75',
-    messagingSenderId: '705339786160',
-    projectId: 'weather-app-bc3dd',
-    authDomain: 'weather-app-bc3dd.firebaseapp.com',
-    storageBucket: 'weather-app-bc3dd.appspot.com',
-    measurementId: 'G-6F5M47CPGB',
+    apiKey: 'AIzaSyAcX0x9qr_6-OSIwDKl7o3gnVah5NBJbUM',
+    appId: '1:216408854473:web:73a75542272f2597f02218',
+    messagingSenderId: '216408854473',
+    projectId: 'mobile-weather-fb042',
+    authDomain: 'mobile-weather-fb042.firebaseapp.com',
+    databaseURL: 'https://mobile-weather-fb042-default-rtdb.firebaseio.com',
+    storageBucket: 'mobile-weather-fb042.appspot.com',
+    measurementId: 'G-1S4TP3PWTL',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBgW0iS7l2ELAhhvdjpfEPw-QtVkJqrfNw',
-    appId: '1:705339786160:android:559c5d987746e79c088c75',
-    messagingSenderId: '705339786160',
-    projectId: 'weather-app-bc3dd',
-    storageBucket: 'weather-app-bc3dd.appspot.com',
+    apiKey: 'AIzaSyD9W4lnyfbxJlaezJO0ab8qXRnDrF4dD38',
+    appId: '1:216408854473:android:26d81e360a66d020f02218',
+    messagingSenderId: '216408854473',
+    projectId: 'mobile-weather-fb042',
+    databaseURL: 'https://mobile-weather-fb042-default-rtdb.firebaseio.com',
+    storageBucket: 'mobile-weather-fb042.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCJR_AP6DW2XoiMxufKKqzg19aP6vBGwss',
-    appId: '1:705339786160:ios:14b2056a539e92e3088c75',
-    messagingSenderId: '705339786160',
-    projectId: 'weather-app-bc3dd',
-    storageBucket: 'weather-app-bc3dd.appspot.com',
-    iosClientId: '705339786160-959c0aikggm5okbgmsl1p13ej9uulkc1.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCBhskRugYx1CAKRZe0cgdwLGFzNMln0FU',
+    appId: '1:216408854473:ios:ef53f485094c63d8f02218',
+    messagingSenderId: '216408854473',
+    projectId: 'mobile-weather-fb042',
+    databaseURL: 'https://mobile-weather-fb042-default-rtdb.firebaseio.com',
+    storageBucket: 'mobile-weather-fb042.appspot.com',
+    iosClientId: '216408854473-mve13ppre05e0dgj98ff7lbsota605na.apps.googleusercontent.com',
     iosBundleId: 'com.example.helloApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCJR_AP6DW2XoiMxufKKqzg19aP6vBGwss',
-    appId: '1:705339786160:ios:53deedf94e0eedf2088c75',
-    messagingSenderId: '705339786160',
-    projectId: 'weather-app-bc3dd',
-    storageBucket: 'weather-app-bc3dd.appspot.com',
-    iosClientId: '705339786160-745nnlgbk1a3ci8d31it07vtraar9er1.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCBhskRugYx1CAKRZe0cgdwLGFzNMln0FU',
+    appId: '1:216408854473:ios:f4c47b58e83b2da6f02218',
+    messagingSenderId: '216408854473',
+    projectId: 'mobile-weather-fb042',
+    databaseURL: 'https://mobile-weather-fb042-default-rtdb.firebaseio.com',
+    storageBucket: 'mobile-weather-fb042.appspot.com',
+    iosClientId: '216408854473-7c0nhu9g6c46pl66mv6ggaali1082gb5.apps.googleusercontent.com',
     iosBundleId: 'com.example.helloApp.RunnerTests',
   );
 }
