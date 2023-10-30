@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationPage extends StatelessWidget {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -11,6 +13,7 @@ class RegistrationPage extends StatelessWidget {
   Future<void> _registerUser(BuildContext context) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        // name: nameController.text,
         email: emailController.text,
         password: passwordController.text,
       );
@@ -43,86 +46,126 @@ class RegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1E213A),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 100), // Adding space instead of an AppBar
-          Text(
-            'Sign Up',
-            style: TextStyle(fontSize: 24.0, color: Colors.white),
-          ),
-          SizedBox(height: 20),
-          TextFormField(
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: 'Email',
-              labelStyle: TextStyle(color: Colors.white),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.white,
-                  width: 2.0,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 100), // Adding space instead of an AppBar
+            Text(
+              'Sign Up',
+              style: TextStyle(fontSize: 24.0, color: Colors.white),
+            ),
+            SizedBox(height: 30),
+            TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: 'Name',
+                labelStyle: TextStyle(color: Colors.white),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 5.0, // Adjust the horizontal padding
+                  vertical: 5.0, // Adjust the vertical padding
                 ),
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(5),
-                  bottom: Radius.circular(5),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(5),
+                    bottom: Radius.circular(5),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.white,
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+
+            TextFormField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                labelStyle: TextStyle(color: Colors.white),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 5.0, // Adjust the horizontal padding
+                  vertical: 5.0, // Adjust the vertical padding
                 ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(5),
+                    bottom: Radius.circular(5),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                labelStyle: TextStyle(color: Colors.white),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 5.0, // Adjust the horizontal padding
+                  vertical: 5.0, // Adjust the vertical padding
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(5),
+                    bottom: Radius.circular(5),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+                // obscure text: true,
               ),
             ),
-            style: TextStyle(color: Colors.white),
-          ),
-          SizedBox(height: 20),
-          TextFormField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: 'Password',
-              labelStyle: TextStyle(color: Colors.white),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.white,
-                  width: 2.0,
-                ),
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(5),
-                  bottom: Radius.circular(5),
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.white,
-                ),
-              ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _registerUser(context);
+              },
+              child: const Text('Sign Up'),
             ),
-            obscureText: true,
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              _registerUser(context);
-            },
-            child: const Text('Sign Up'),
-          ),
-          const SizedBox(height: 20),
-          const Text(
-            'Already have an account? Login',
-            style: TextStyle(
+            const SizedBox(height: 20),
+            const Text(
+              'Already have an account? Login',
+              style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.white, // Set text color to white
                 fontWeight: FontWeight
-                    .bold), // Make the text blue or your preferred color
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Navigate to the login page when the "Login" button is pressed
-              Navigator.of(context).pushReplacementNamed('/login');
-            },
-            child: const Text('Login'),
-          ),
-        ],
+                    .bold, // Make the text blue or your preferred color
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the login page when the "Login" button is pressed
+                Navigator.of(context).pushReplacementNamed('/login');
+              },
+              child: const Text('Login'),
+            ),
+          ],
+        ),
       ),
     );
   }

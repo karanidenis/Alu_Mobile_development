@@ -5,7 +5,8 @@ import 'Login.dart';
 import 'RegistrationPage.dart';
 import 'api.dart';
 import 'firebase_options.dart';
-import 'home.dart';
+import 'default_locator.dart';
+import 'feedback.dart';
 
 // function to trigger build when the app is run
 Future<void> main() async {
@@ -18,7 +19,7 @@ Future<void> main() async {
       '/': (context) => const WelcomeRoute(),
       '/registration': (context) => RegistrationPage(),
       '/login': (context) => LoginPage(),
-      '/home': (context) => const Geometry(),
+      '/home': (context) =>  Location(),
       '/third': (context) => const ThirdRoute(),
     },
   ));
