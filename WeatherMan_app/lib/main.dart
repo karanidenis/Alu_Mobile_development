@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 import 'api.dart';
 import 'Login.dart';
-import 'RegistrationPage.dart';
+import 'Signup.dart';
 
 // await Firebase.initializeApp(
 //   options: DefaultFirebaseOptions.currentPlatform,
@@ -60,7 +60,7 @@ Future<void> main() async {
     initialRoute: '/',
     routes: {
       '/': (context) => const WelcomeRoute(),
-      '/registration': (context) => RegistrationPage(),
+      '/registration': (context) => SignUpPage(),
       '/login': (context) => LoginPage(),
       '/home': (context) => const HomeRoute(),
       '/third': (context) => const ThirdRoute(),
