@@ -1,30 +1,60 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DatabaseMethods {
+class DataGeoMethods {
   Future addUserDetails(Map<String, dynamic> userInfoMap) async {
     return await FirebaseFirestore.instance
-        .collection("users")
+        .collection("location")
         .doc()
         .set(userInfoMap);
   }
 
-  Future<QuerySnapshot> getthisUserInfo(String name) async {
+  Future<QuerySnapshot> getthisUserInfo(String location) async {
     return await FirebaseFirestore.instance
-        .collection("users")
-        .where("First Name", isEqualTo: name)
+        .collection("location")
+        .where("Location", isEqualTo: location)
         .get();
   }
 
-  Future UpdateUserData(String age, String id) async {
+  Future UpdateUserData(String timezone, String id) async {
     return await FirebaseFirestore.instance
-        .collection("users")
+        .collection("location")
         .doc(id)
-        .update({"Age": age});
+        .update({"Time Zone": timezone});
   }
 
   Future DeleteUserData(String id) async {
     return await FirebaseFirestore.instance
-        .collection("users")
+        .collection("location")
+        .doc(id)
+        .delete();
+  }
+}
+
+class DataFeedMethods {
+  Future addFeedDetails(Map<String, dynamic> userInfoMap) async {
+    return await FirebaseFirestore.instance
+        .collection("feedback")
+        .doc()
+        .set(userInfoMap);
+  }
+
+  Future<QuerySnapshot> getthisUserInfo(String email) async {
+    return await FirebaseFirestore.instance
+        .collection("feedback")
+        .where("Email", isEqualTo: email)
+        .get();
+  }
+
+  Future UpdateFeedData(String bugtype, String id) async {
+    return await FirebaseFirestore.instance
+        .collection("feedback")
+        .doc(id)
+        .update({"Bug Type": bugtype});
+  }
+
+Future DeleteFeedData(String id) async {
+    return await FirebaseFirestore.instance
+        .collection("feedback")
         .doc(id)
         .delete();
   }
