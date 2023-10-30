@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized(); // Add this line to ensure WidgetsBinding is initialized.
-//   await dotenv.load(fileName: "lib/.env"); // Load environment variables from .env file
-//   runApp(MyApp());
-// }
-
 
 final TextEditingController _searchController = TextEditingController();
 

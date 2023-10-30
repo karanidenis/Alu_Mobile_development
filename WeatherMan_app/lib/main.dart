@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'firebase_options.dart';
-import 'api.dart';
 import 'Login.dart';
 import 'Signup.dart';
 
+import 'api.dart';
+import 'firebase_options.dart';
+import 'home.dart';
 // await Firebase.initializeApp(
 //   options: DefaultFirebaseOptions.currentPlatform,
 // );
@@ -51,6 +51,7 @@ import 'Signup.dart';
 //   }
 // }
 
+
 // function to trigger build when the app is run
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,7 +63,7 @@ Future<void> main() async {
       '/': (context) => const WelcomeRoute(),
       '/registration': (context) => SignUpPage(),
       '/login': (context) => LoginPage(),
-      '/home': (context) => const HomeRoute(),
+      '/home': (context) => const Geometry(),
       '/third': (context) => const ThirdRoute(),
     },
   ));
@@ -152,70 +153,6 @@ class WelcomeRoute extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeRoute extends StatelessWidget {
-  const HomeRoute({Key? key}) : super(key: key);
-  static const primarybackground = Color(0xFF1E213A);
-
-  @override
-  Widget build(BuildContext context) {
-    const String city = 'Nairobi';
-
-    return Scaffold(
-      backgroundColor: primarybackground,
-      appBar: AppBar(
-        backgroundColor: primarybackground,
-        title: const Text(
-          "Home Page",
-          style: TextStyle(
-            fontSize: 30.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the third page',
-            onPressed: () async {
-              try {
-                final cityData =
-                    await fetchCityData(city); // Fetch city data here
-                final weatherData = await fetchWeatherData(cityData["lat"],
-                    cityData["lon"]); // Fetch weather data using coordinates
-
-                Navigator.pushNamed(
-                  context,
-                  '/third',
-                  arguments: {
-                    "cityData": cityData,
-                    "weatherData": weatherData,
-                  }, // Pass both city and weather data as arguments
-                );
-              } catch (e) {
-                // Handle any errors that may occur during the fetch.
-                print('Error fetching data: $e');
-              }
-            },
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Hello, User',
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
         ),
       ),
     );
