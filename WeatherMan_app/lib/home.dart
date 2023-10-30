@@ -37,136 +37,171 @@ class _GeoState extends State<Geometry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add Your Location"),
-      ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 20.0,
+      backgroundColor: Color(0xFF1E213A),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 100), // Adding space instead of an AppBar
+          Text(
+            'Add Your Location',
+            style: TextStyle(fontSize: 24.0, color: Colors.white),
+          ),
+          SizedBox(height: 80),
+          const Padding(
+            padding: EdgeInsets.only(left: 30.0),
+            child: Text(
+              "Location",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0),
-              child: Text(
-                "Location",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22)),
+            child: TextField(
+              controller: userlocationcontroller,
+              decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(5),
+                      bottom: Radius.circular(5),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintText: 'Your Location',
+                  hintStyle: TextStyle(color: Colors.white60)),
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30.0),
+            child: Text(
+              "Country",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22)),
+            child: TextField(
+              controller: userlocationcontroller,
+              decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(5),
+                      bottom: Radius.circular(5),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintText: 'Your Country',
+                  hintStyle: TextStyle(color: Colors.white60)),
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30.0),
+            child: Text(
+              "Time Zone",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22)),
+            child: TextField(
+              controller: userlocationcontroller,
+              decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(5),
+                      bottom: Radius.circular(5),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintText: 'Your Time Zone',
+                  hintStyle: TextStyle(color: Colors.white60)),
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(
+            height: 90.0,
+          ),
+          GestureDetector(
+            onTap: () {
+              uploadData();
+            },
+            child: Center(
+              child: Container(
+                width: 150,
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Center(
+                    child: Text(
+                  "Add Location",
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                )),
               ),
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
-              margin: const EdgeInsets.symmetric(horizontal: 20.0),
-              decoration: BoxDecoration(
-                  color: const Color(0xFF4c59a5),
-                  borderRadius: BorderRadius.circular(22)),
-              child: TextField(
-                controller: userlocationcontroller,
-                decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Your Location',
-                    hintStyle: TextStyle(color: Colors.white60)),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0),
-              child: Text(
-                "Country",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
-              margin: const EdgeInsets.symmetric(horizontal: 20.0),
-              decoration: BoxDecoration(
-                  color: const Color(0xFF4c59a5),
-                  borderRadius: BorderRadius.circular(22)),
-              child: TextField(
-                controller: usercountrycontroller,
-                decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Your Country',
-                    hintStyle: TextStyle(color: Colors.white60)),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0),
-              child: Text(
-                "Time Zone",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
-              margin: const EdgeInsets.symmetric(horizontal: 20.0),
-              decoration: BoxDecoration(
-                  color: const Color(0xFF4c59a5),
-                  borderRadius: BorderRadius.circular(22)),
-              child: TextField(
-                controller: usertimezonecontroller,
-                decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Your Time Zone',
-                    hintStyle: TextStyle(color: Colors.white60)),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(
-              height: 90.0,
-            ),
-            GestureDetector(
-              onTap: () {
-                uploadData();
-              },
-              child: Center(
-                child: Container(
-                  width: 150,
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Center(
-                      child: Text(
-                    "Add Location",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  )),
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
