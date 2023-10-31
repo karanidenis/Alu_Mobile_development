@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-
+    id 'com.google.gms.google-services'
    
 }
 
@@ -74,8 +74,8 @@ flutter {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
+    implementation platform('com.google.firebase:firebase-bom:32.4.1')
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  
-
 }
+
+apply plugin: 'com.google.gms.google-services'
