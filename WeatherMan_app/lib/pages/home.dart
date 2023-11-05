@@ -45,7 +45,7 @@ class _UserProfileState extends State<UserProfile> {
     Map<String, dynamic> userData = {
       "firstName": firstName,
       "lastName": lastName,
-      "location": lastName,
+      "location": location,
     };
 
     await userRef.set(userData, SetOptions(merge: true));
@@ -101,7 +101,6 @@ class _UserProfileState extends State<UserProfile> {
                     top: Radius.circular(5),
                     bottom: Radius.circular(5),
                   ),
-                  
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
