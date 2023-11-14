@@ -1,23 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
+  @override
+  _SignupPageState createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  SignUpPage({super.key});
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   // Function to handle user registration
   Future<void> _registerUser(BuildContext context) async {
     try {
-      final UserCredential authResult =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-       
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-
+      final UserCredential authResult = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
       final User? user = authResult.user;
 
       if (user != null) {
@@ -50,6 +55,41 @@ class SignUpPage extends StatelessWidget {
 
       return;
     }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+
+        final UserCredential authResult =
+            await _auth.signInWithCredential(credential);
+        final User? user = authResult.user;
+
+        if (user != null) {
+          // Ensure the user is not anonymous
+          assert(!user.isAnonymous);
+          // Ensure the user is the current user
+          assert(user.uid == _auth.currentUser!.uid);
+
+          print('Google Sign In succeeded: $user');
+          return user;
+        }
+      }
+    } catch (error) {
+      print(error);
+      return null;
+    }
+    return null;
   }
 
   @override
@@ -174,6 +214,38 @@ class SignUpPage extends StatelessWidget {
               },
               child: const Text('Login'),
             ),
+            const SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              child: InkWell(
+                onTap: signInWithGoogle,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/google.png', // Replace with your Google icon asset
+                        height: 24,
+                        width: 15,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        'Continue with Google',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
