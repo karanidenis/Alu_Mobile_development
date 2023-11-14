@@ -37,11 +37,16 @@ dependencies:
   firebase_auth: ^4.12.0
   cloud_firestore: ^4.12.1
   fluttertoast: ^8.2.2
+  google_sign_in: ^6.1.6
+  flutter_launcher_icons: ^0.13.1
+ 
+ 
 
   
 flutter:
   assets:
     - assets/images/weather1.jpg
+    - assets/images/google.png
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,13 +63,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  http: ^0.13.3
+  
+  http: ^1.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
