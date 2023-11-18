@@ -100,94 +100,104 @@ class _SignupPageState extends State<SignupPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100), // Adding space instead of an AppBar
+            const SizedBox(height: 70), // Adding space instead of an AppBar
             const Text(
               'Sign Up',
               style: TextStyle(fontSize: 24.0, color: Colors.white),
             ),
             const SizedBox(height: 30),
-            TextFormField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                labelText: 'Name',
-                labelStyle: TextStyle(color: Colors.white),
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 5.0, // Adjust the horizontal padding
-                  vertical: 5.0, // Adjust the vertical padding
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0,
+            SizedBox(
+              width: 350, // Adjust the width of the container
+              child: TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Name',
+                  labelStyle: TextStyle(color: Colors.white),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 5.0, // Adjust the horizontal padding
+                    vertical: 5.0, // Adjust the vertical padding
                   ),
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(5),
-                    bottom: Radius.circular(5),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8),
+                      bottom: Radius.circular(8),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
-                ),
+                style: const TextStyle(color: Colors.white),
               ),
-              style: const TextStyle(color: Colors.white),
             ),
+
             const SizedBox(height: 20),
 
-            TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                labelStyle: TextStyle(color: Colors.white),
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 5.0, // Adjust the horizontal padding
-                  vertical: 5.0, // Adjust the vertical padding
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0,
+            SizedBox(
+              width: 350, // Adjust the width of the container
+              child: TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 5.0, // Adjust the horizontal padding
+                    vertical: 5.0, // Adjust the vertical padding
                   ),
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(5),
-                    bottom: Radius.circular(5),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8),
+                      bottom: Radius.circular(8),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
-                ),
+                style: const TextStyle(color: Colors.white),
               ),
-              style: const TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 20),
-            TextFormField(
-              controller: passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                labelStyle: TextStyle(color: Colors.white),
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 5.0, // Adjust the horizontal padding
-                  vertical: 5.0, // Adjust the vertical padding
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0,
+            SizedBox(
+              width: 350, // Adjust the width of the container
+              child: TextFormField(
+                controller: passwordController,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.white),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 5.0, // Adjust the horizontal padding
+                    vertical: 5.0, // Adjust the vertical padding
                   ),
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(5),
-                    bottom: Radius.circular(5),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8),
+                      bottom: Radius.circular(8),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
-                ),
-                // obscure text: true,
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             const SizedBox(height: 20),
@@ -215,12 +225,14 @@ class _SignupPageState extends State<SignupPage> {
               child: const Text('Login'),
             ),
             const SizedBox(height: 20),
-            Container(
-              width: double.infinity,
+            Center(
+                child: Center(
+                    child: SizedBox(
+              width: 350,
               child: InkWell(
                 onTap: signInWithGoogle,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -233,8 +245,8 @@ class _SignupPageState extends State<SignupPage> {
                         height: 24,
                         width: 15,
                       ),
-                      SizedBox(width: 10),
-                      Text(
+                      const SizedBox(width: 10),
+                      const Text(
                         'Continue with Google',
                         style: TextStyle(
                           fontSize: 16,
@@ -245,7 +257,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
               ),
-            )
+            )))
           ],
         ),
       ),
