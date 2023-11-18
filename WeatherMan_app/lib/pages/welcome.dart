@@ -18,29 +18,11 @@ class WelcomeRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primarybackground,
-      appBar: AppBar(
-        backgroundColor: primarybackground,
-        // title: const Text('Welcome Page'),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.navigate_next,
-              color: Colors.white,
-            ),
-
-            tooltip: 'Go to the second page',
-            onPressed: () {
-              Navigator.pushNamed(context, '/login');
-            },
-            // Add additional action buttons
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(
-                top: 100.0), // Adjust the top padding as needed
+                top: 200.0), // Adjust the top padding as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
