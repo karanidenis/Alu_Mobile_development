@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
-
 class UserProfile extends StatefulWidget {
-  const UserProfile({super.key});
+  const UserProfile({Key? key}) : super(key: key);
 
   @override
   _UserProfileState createState() => _UserProfileState();
@@ -15,12 +13,13 @@ class _UserProfileState extends State<UserProfile> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-
   final currentUserId = FirebaseAuth.instance.currentUser!.uid;
   final _firestore = FirebaseFirestore.instance;
   final userRef = FirebaseFirestore.instance
       .collection('users')
       .doc(FirebaseAuth.instance.currentUser!.uid);
+
+  int _currentIndex = 0; // Add this line to track the current tab index
 
   @override
   void initState() {
@@ -43,15 +42,12 @@ class _UserProfileState extends State<UserProfile> {
     String firstName = firstNameController.text;
     String lastName = lastNameController.text;
     String location = locationController.text;
-
     Map<String, dynamic> userData = {
       "firstName": firstName,
       "lastName": lastName,
       "location": location,
     };
-
     await userRef.set(userData, SetOptions(merge: true));
-
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('User data updated.'),
     ));
@@ -59,11 +55,9 @@ class _UserProfileState extends State<UserProfile> {
 
   void deleteUserData() async {
     await userRef.delete();
-
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('User data deleted.'),
     ));
-
     // Clear the text fields
     firstNameController.text = '';
     lastNameController.text = '';
@@ -78,12 +72,12 @@ class _UserProfileState extends State<UserProfile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 180),
             const Text(
               'User Profile',
               style: TextStyle(fontSize: 24.0, color: Colors.white),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             TextField(
               // First Name TextField
               controller: firstNameController,
@@ -192,6 +186,35 @@ class _UserProfileState extends State<UserProfile> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout),
+            label: 'Logout',
+          ),
+        ],
+        currentIndex: _currentIndex,
+        selectedItemColor: const Color(0xFF1E213A),
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+            if (_currentIndex == 0) {
+              // Navigate to home screen
+              Navigator.pushNamed(context,
+                  '/'); // Change '/home' to the actual route for your home screen
+            } else if (_currentIndex == 1) {
+              // Log out
+              FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context,
+                  '/login'); // Change '/login' to the actual route for your login screen
+            }
+          });
+        },
       ),
     );
   }
