@@ -5,7 +5,6 @@ import 'package:hello_app/pages/home.dart';
 import 'package:hello_app/pages/login.dart';
 import 'package:hello_app/pages/signup.dart';
 import 'package:hello_app/pages/welcome.dart';
-import 'package:hello_app/pages/signout.dart';
 
 import '../firebase_options.dart';
 
@@ -22,7 +21,6 @@ Future<void> main() async {
       '/login': (context) => const LoginPage(),
       '/home': (context) => const UserProfile(),
       '/third': (context) => const ThirdRoute(),
-      '/signout':(context) => const SignoutPage(),
     },
   ));
 }
