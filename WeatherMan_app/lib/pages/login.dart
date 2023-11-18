@@ -74,12 +74,12 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 70), // Adding space instead of an AppBar
+          const SizedBox(height: 180), // Adding space instead of an AppBar
           const Text(
             'Login',
             style: TextStyle(fontSize: 24.0, color: Colors.white),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 50),
           SizedBox(
             width: 350, // Adjust the width of the container
             child: TextFormField(
