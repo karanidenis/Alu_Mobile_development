@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
 final TextEditingController _searchController = TextEditingController();
 
 class SearchBar extends StatelessWidget {
   final TextEditingController searchController;
   final Function(String) onSearch;
 
-  const SearchBar({super.key, 
+  const SearchBar({
+    super.key,
     required this.searchController,
     required this.onSearch,
   });
@@ -252,8 +252,10 @@ class _ThirdRouteState extends State<ThirdRoute> {
 //   }
 // }
 
-Future<Map<String, dynamic>> fetchCityData(String city) async {
+Future<Map<String, dynamic>> fetchCityData(String city,
+    {http.Client? client}) async {
   // final apiKey = dotenv.env['weathermanAPI_Key'];
+  client ??= http.Client();
   const apiKey = 'be5a05dee1eb79acf6457d04817d0300';
   print(apiKey);
   final response = await http.get(Uri.parse(
@@ -276,8 +278,9 @@ Future<Map<String, dynamic>> fetchCityData(String city) async {
   throw Exception('Failed to load weather data');
 }
 
-Future<Map<String, dynamic>> fetchWeatherData(double latitude, double longitude) async {
-  // final apiKey = dotenv.env['weathermanAPI_Key'];
+Future<Map<String, dynamic>> fetchWeatherData(double latitude, double longitude,
+    {http.Client? client}) async {
+  client ??= http.Client();
   const apiKey = 'be5a05dee1eb79acf6457d04817d0300';
   final response = await http.get(Uri.parse(
     'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey',
