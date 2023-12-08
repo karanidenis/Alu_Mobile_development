@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 final TextEditingController _searchController = TextEditingController();
 
@@ -64,6 +67,45 @@ class _ThirdRouteState extends State<ThirdRoute> {
   final TextEditingController _searchController = TextEditingController();
   String city = 'Nairobi';
   String weatherIconUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserLocationFromFirestore();
+  }
+
+  Future<void> _getUserLocationFromFirestore() async {
+    try {
+      // Get the current user's ID from Firebase Auth
+      User? currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        // Fetch the location data using the user's ID
+        QuerySnapshot userLocationSnapshot = await FirebaseFirestore.instance
+            .collection("location")
+            .where("UserId", isEqualTo: currentUser.uid)
+            .get();
+
+
+        // Assuming you want the first location result
+        if (userLocationSnapshot.docs.isNotEmpty) {
+          var docData = userLocationSnapshot.docs.first.data();
+          String fetchedCity =
+              (docData as Map<String, dynamic>)["location"] as String? ??
+                  'Nairobi';
+          setState(() {
+            city = fetchedCity;
+          // print(FirebaseAuth.instance.currentUser?.uid);
+          // print(city);
+          // print(fetchedCity);
+          });
+        }
+      }
+    } catch (e) {
+      print('Error fetching location from Firestore: $e');
+      // Handle any errors here
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
