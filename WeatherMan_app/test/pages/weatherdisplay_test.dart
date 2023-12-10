@@ -9,7 +9,7 @@ void main() {
 
     // Ensure that the initial state shows a specific text or widget.
     expect(find.text('Search City'), findsOneWidget);
-6
+
     // Tap the search button
     await tester.tap(find.byIcon(Icons.search));
     await tester.pumpAndSettle(); // Wait for FutureBuilders to settle

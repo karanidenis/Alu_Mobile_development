@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 final TextEditingController _searchController = TextEditingController();
 
@@ -67,6 +67,7 @@ class _ThirdRouteState extends State<ThirdRoute> {
   final TextEditingController _searchController = TextEditingController();
   String city = 'Nairobi';
   String weatherIconUrl = 'https://openweathermap.org/img/wn/01d@2x.png';
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -85,7 +86,6 @@ class _ThirdRouteState extends State<ThirdRoute> {
             .where("UserId", isEqualTo: currentUser.uid)
             .get();
 
-
         // Assuming you want the first location result
         if (userLocationSnapshot.docs.isNotEmpty) {
           var docData = userLocationSnapshot.docs.first.data();
@@ -94,9 +94,9 @@ class _ThirdRouteState extends State<ThirdRoute> {
                   'Nairobi';
           setState(() {
             city = fetchedCity;
-          // print(FirebaseAuth.instance.currentUser?.uid);
-          // print(city);
-          // print(fetchedCity);
+            // print(FirebaseAuth.instance.currentUser?.uid);
+            // print(city);
+            // print(fetchedCity);
           });
         }
       }
@@ -106,156 +106,184 @@ class _ThirdRouteState extends State<ThirdRoute> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E213A),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const SliverAppBar(
-            backgroundColor: Color(0xFF1E213A),
-            expandedHeight: 0, // Empty app bar, set to 0 height
-            floating: false,
-            pinned: false,
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              width: MediaQuery.of(context).size.width /
-                  2, // Set the width of the search bar
-              padding: const EdgeInsets.only(left: 10, right: 100),
-              child: SearchBar(
-                searchController: _searchController,
-                onSearch: (searchText) {
-                  setState(() {
-                    city = searchText;
-                  });
-                },
+        backgroundColor: const Color(0xFF1E213A),
+        body: CustomScrollView(
+          slivers: <Widget>[
+            const SliverAppBar(
+              backgroundColor: Color(0xFF1E213A),
+              expandedHeight: 100, // Empty app bar, set to 0 height
+              floating: false,
+              pinned: false,
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                width: MediaQuery.of(context).size.width /
+                    2, // Set the width of the search bar
+                padding: const EdgeInsets.only(left: 50, right: 50),
+                child: SearchBar(
+                  searchController: _searchController,
+                  onSearch: (searchText) {
+                    setState(() {
+                      city = searchText;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: FutureBuilder<Map<String, dynamic>>(
-              future: fetchCityData(city),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}'));
-                } else if (!snapshot.hasData || snapshot.data == null) {
-                  return const Center(child: Text('No data available'));
-                } else {
-                  final locationData = snapshot.data!;
-                  final latitude = locationData["lat"];
-                  final longitude = locationData["lon"];
-                  final cityName = locationData["name"];
+            SliverToBoxAdapter(
+              child: FutureBuilder<Map<String, dynamic>>(
+                future: fetchCityData(city),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data == null) {
+                    return const Center(child: Text('No data available'));
+                  } else {
+                    final locationData = snapshot.data!;
+                    final latitude = locationData["lat"];
+                    final longitude = locationData["lon"];
+                    final cityName = locationData["name"];
 
-                  return FutureBuilder<Map<String, dynamic>>(
-                    future: fetchWeatherData(latitude, longitude),
-                    builder: (context, weatherSnapshot) {
-                      if (weatherSnapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (weatherSnapshot.hasError) {
-                        return Center(
-                            child: Text('Error: ${weatherSnapshot.error}'));
-                      } else if (!weatherSnapshot.hasData ||
-                          weatherSnapshot.data == null) {
-                        return const Center(
-                            child: Text('No weather data available'));
-                      } else {
-                        final weatherData = weatherSnapshot.data!;
-                        final weatherDescription =
-                            weatherData["text"] ?? 'Weather description N/A';
-                        final weatherIcon = weatherData["Icon"] ?? '01d';
-                        // show the weather icon on console
-                        print(weatherIcon);
-                        // final pressure = weatherData["pressure"] ?? 0;
-                        // final humidity = weatherData["humidity"] ?? 0;
-                        final temp = weatherData["temp"] ?? 0;
-                        // final windSpeed = weatherData["wind-speed"] ?? 0;
-                        final celsiusTemp = (temp - 273.15).toInt();
+                    return FutureBuilder<Map<String, dynamic>>(
+                      future: fetchWeatherData(latitude, longitude),
+                      builder: (context, weatherSnapshot) {
+                        if (weatherSnapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (weatherSnapshot.hasError) {
+                          return Center(
+                              child: Text('Error: ${weatherSnapshot.error}'));
+                        } else if (!weatherSnapshot.hasData ||
+                            weatherSnapshot.data == null) {
+                          return const Center(
+                              child: Text('No weather data available'));
+                        } else {
+                          final weatherData = weatherSnapshot.data!;
+                          final weatherDescription =
+                              weatherData["text"] ?? 'Weather description N/A';
+                          final weatherIcon = weatherData["Icon"] ?? '01d';
+                          // show the weather icon on console
+                          print(weatherIcon);
+                          // final pressure = weatherData["pressure"] ?? 0;
+                          // final humidity = weatherData["humidity"] ?? 0;
+                          final temp = weatherData["temp"] ?? 0;
+                          // final windSpeed = weatherData["wind-speed"] ?? 0;
+                          final celsiusTemp = (temp - 273.15).toInt();
 
-                        weatherIconUrl =
-                            'https://openweathermap.org/img/wn/$weatherIcon@4x.png';
+                          weatherIconUrl =
+                              'https://openweathermap.org/img/wn/$weatherIcon@4x.png';
 
-                        return Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            // String weatherIconUrl = 'https://openweathermap.org/img/wn/$weatherIcon@2x.png';
-                            Image.network(
-                              weatherIconUrl,
-                              width: 200.0,
-                              height: 100.0,
-                            ),
-                            // Icon(getWeatherIcon(weatherIcon), size: 150.0),
-                            const SizedBox(height: 20.0),
-                            RichText(
-                              text: TextSpan(
-                                style: const TextStyle(
-                                  fontSize: 100.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                          return Column(
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // String weatherIconUrl = 'https://openweathermap.org/img/wn/$weatherIcon@2x.png';
+                              Image.network(
+                                weatherIconUrl,
+                                width: 200.0,
+                                height: 100.0,
+                              ),
+                              // Icon(getWeatherIcon(weatherIcon), size: 150.0),
+                              const SizedBox(height: 20.0),
+                              RichText(
+                                text: TextSpan(
+                                  style: const TextStyle(
+                                    fontSize: 100.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                        text: '$celsiusTemp',
+                                        style: const TextStyle(
+                                          fontSize: 120.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFFE7E7EB),
+                                        )),
+                                    const TextSpan(
+                                      text: '°C',
+                                      style: TextStyle(
+                                          fontSize: 50.0,
+                                          color: Color(0xFFA09FB1)),
+                                    ),
+                                  ],
                                 ),
+                              ),
+                              const SizedBox(height: 20.0),
+                              Text(
+                                '$weatherDescription',
+                                style: const TextStyle(
+                                  fontSize: 40.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFA09FB1),
+                                ),
+                              ),
+                              const SizedBox(height: 20.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextSpan(
-                                      text: '$celsiusTemp',
-                                      style: const TextStyle(
-                                        fontSize: 120.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xFFE7E7EB),
-                                      )),
-                                  const TextSpan(
-                                    text: '°C',
-                                    style: TextStyle(
-                                        fontSize: 50.0,
-                                        color: Color(0xFFA09FB1)),
+                                  const Icon(
+                                    Icons.room,
+                                    size: 27.0,
+                                    color: Color(0xFFA09FB1),
+                                  ),
+                                  const SizedBox(width: 18.0),
+                                  Text(
+                                    '$cityName',
+                                    style: const TextStyle(
+                                      fontSize: 30.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFA09FB1),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                            const SizedBox(height: 20.0),
-                            Text(
-                              '$weatherDescription',
-                              style: const TextStyle(
-                                fontSize: 40.0,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFA09FB1),
-                              ),
-                            ),
-                            const SizedBox(height: 20.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.room,
-                                  size: 27.0,
-                                  color: Color(0xFFA09FB1),
-                                ),
-                                const SizedBox(width: 18.0),
-                                Text(
-                                  '$cityName',
-                                  style: const TextStyle(
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFFA09FB1),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      }
-                    },
-                  );
-                }
-              },
+                            ],
+                          );
+                        }
+                      },
+                    );
+                  }
+                },
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.logout),
+              label: 'Logout',
+            ),
+          ],
+          currentIndex: _currentIndex,
+          selectedItemColor: const Color(0xFF1E213A),
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+              if (_currentIndex == 0) {
+                // Navigate to home screen
+                Navigator.pushNamed(context,
+                    '/home'); // Replace '/home' with the actual route for your home screen
+              } else if (_currentIndex == 1) {
+                // Log out
+                FirebaseAuth.instance.signOut();
+                Navigator.pushNamed(context,
+                    '/login'); // Replace '/login' with the actual route for your login screen
+              }
+            });
+          },
+        ));
   }
 }
 

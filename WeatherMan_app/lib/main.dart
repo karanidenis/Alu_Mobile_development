@@ -5,6 +5,7 @@ import 'package:hello_app/pages/home.dart';
 import 'package:hello_app/pages/login.dart';
 import 'package:hello_app/pages/signup.dart';
 import 'package:hello_app/pages/welcome.dart';
+import 'package:hello_app/screens/splash_screen.dart';
 
 import '../firebase_options.dart';
 
@@ -16,6 +17,7 @@ Future<void> main() async {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
+      '/splash': (context) => const SplashScreen(),
       '/': (context) => const WelcomeRoute(),
       '/registration': (context) => const SignupPage(),
       '/login': (context) => const LoginPage(),

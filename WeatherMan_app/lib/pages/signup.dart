@@ -21,13 +21,13 @@ class _SignupPageState extends State<SignupPage> {
   Future<void> _registerUser(BuildContext context) async {
     try {
       final UserCredential authResult = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
+          .createUserWithEmailAndPassword(
               email: emailController.text, password: passwordController.text);
       final User? user = authResult.user;
 
       if (user != null) {
         print("Sign up succeeded");
-        // return user;
+        // Optionally, you can add more logic here after successful registration
       }
 
       // User created successfully, you can navigate to the home page or show a success message.
@@ -52,19 +52,21 @@ class _SignupPageState extends State<SignupPage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('An error occurred. Please try again later.'),
       ));
-
-      return;
     }
   }
 
-  Future<User?> signInWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await googleSignIn.signIn();
+      // Check if the user is already signed in with Google
+      final GoogleSignInAccount? currentAccount = googleSignIn.currentUser;
 
-      if (googleSignInAccount != null) {
+      // If not signed in, show the account picker
+      final GoogleSignInAccount? selectedAccount =
+          currentAccount ?? await googleSignIn.signIn();
+
+      if (selectedAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount.authentication;
+            await selectedAccount.authentication;
 
         final AuthCredential credential = GoogleAuthProvider.credential(
           accessToken: googleSignInAuthentication.accessToken,
@@ -82,25 +84,36 @@ class _SignupPageState extends State<SignupPage> {
           assert(user.uid == _auth.currentUser!.uid);
 
           print('Google Sign In succeeded: $user');
-          return user;
+
+          // Navigate to the home page or perform other actions after successful sign-in
+          Navigator.of(context).pushReplacementNamed('/home');
         }
       }
     } catch (error) {
-      print(error);
-      return null;
+      print('Google Sign In error: $error');
+      // Handle the error and provide feedback to the user if needed
     }
-    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF1E213A),
+        elevation: 0, // Remove the shadow
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
+        ),
+      ),
       backgroundColor: const Color(0xFF1E213A),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 70), // Adding space instead of an AppBar
+            const SizedBox(height: 50), // Adding space instead of an AppBar
             const Text(
               'Sign Up',
               style: TextStyle(fontSize: 24.0, color: Colors.white),
